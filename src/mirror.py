@@ -1,22 +1,31 @@
 from kivy.app import App
-from kivy.uix.label import Label
+from kivy.uix.widget import Widget
 from kivy.clock import Clock
 
 import time
 import weather
 
-class IncrediblyCrudeClock(Label):
+class ClockFace(Widget):
 	def update(self, *args):
-		self.text = time.strftime("%H:%M:%S")
-		self.font_size = 120
-		self.font_name = "../assets/fonts/alarm-clock.ttf"
+		# self.text = time.strftime("%H:%M:%S")
+		# self.font_size = 120
+		# self.font_name = "../assets/fonts/alarm-clock.ttf"
+		self.ids["clock"].text = time.strftime("%H:%M:%S")
 		print(weather.getWeather())
 
-class TimeApp(App):
+# class IncrediblyCrudeClock(Label):
+# 	def update(self, *args):
+# 		self.text = time.strftime("%H:%M:%S")
+# 		self.font_size = 120
+# 		self.font_name = "../assets/fonts/alarm-clock.ttf"
+# 		print(weather.getWeather())
+
+class ClockFaceApp(App):
     def build(self):
-        crudeclock = IncrediblyCrudeClock()
+        crudeclock = ClockFace()
         Clock.schedule_interval(crudeclock.update, 1)
         return crudeclock
 
-TimeApp().run()
+clockFaceApp = ClockFaceApp()
+clockFaceApp.run()
 
