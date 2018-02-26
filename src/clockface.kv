@@ -1,5 +1,6 @@
 <ClockLabel@Label>:
     font_size: 120
+    size: self.texture_size
     font_name: "../assets/fonts/alarm-clock.ttf"
     # color: 0, 0, 0, 1
     # size: 150, 50
@@ -10,5 +11,6 @@
 <ClockFace>:
 	ClockLabel:
 		id: clock
-    	text: "Random"
-    	pos: root.x, 200
+    	text: '00:00:00'
+    	# pos: root.width / 2 + self.width / 2, 200
+    	pos: root.center_x - self.width /2, root.center_y - self.height / 2
