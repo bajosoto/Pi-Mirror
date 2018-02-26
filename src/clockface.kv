@@ -18,6 +18,11 @@
 	size: self.texture_size
 	font_name: '../assets/fonts/alarm-clock.ttf'
 
+<TrainBusLabel@Label>:
+	font_size: 30
+	size: self.texture_size
+	# font_name: '../assets/fonts/alarm-clock.ttf'
+
 <ClockFace>:
 	ClockLabel:
 		id: clock
@@ -27,14 +32,34 @@
     MinMaxLabel:
     	id: mintemp
     	text: '22c'
-    	pos: root.center_x * 2 - self.width, 0
+    	pos: root.center_x * 2 - self.width - 20, 0
     	color: 0.5, 0.5, 0.5, 1
     MinMaxLabel:
     	id: maxtemp
     	text: '22c'
-    	pos: root.center_x * 2 - self.width, 0 + mintemp.height
+    	pos: root.center_x * 2 - self.width - 20, 0 + mintemp.height
     	color: 0.5, 0.5, 0.5, 1
     TempLabel:
     	id: temp
     	text: '22c'
-    	pos: root.center_x * 2 - self.width - mintemp.width, 0
+    	pos: root.center_x * 2 - self.width - mintemp.width - 20, 0
+    Image:
+    	id: trainimg
+    	source: '../assets/images/train.png'
+    	size: 200,80
+    	pos: root.center_x * 2 - self.width - trainimg.width + 80, root.center_y * 2 - self.height
+	Image:
+		id: busimg
+    	source: '../assets/images/bus.png'
+    	size: 200,80
+    	pos: root.center_x * 2 - self.width - busimg.width + 80, root.center_y * 2 - self.height * 2
+    TrainBusLabel:
+    	id: train
+    	text: '11 min'
+    	pos: root.center_x * 2 - self.width - 20, trainimg.y + 10
+    	color: 0.5, 0.5, 0.5, 1
+    TrainBusLabel:
+    	id: bus
+    	text: '19 min'
+    	pos: root.center_x * 2 - self.width - 20, busimg.y + 10
+    	color: 0.5, 0.5, 0.5, 1
