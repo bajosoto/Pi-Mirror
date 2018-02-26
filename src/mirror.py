@@ -6,24 +6,19 @@ import time
 import weather
 
 class ClockFace(Widget):
-	def update(self, *args):
-		# self.text = time.strftime("%H:%M:%S")
-		# self.font_size = 120
-		# self.font_name = "../assets/fonts/alarm-clock.ttf"
+	def updateTime(self, *args):
 		self.ids["clock"].text = time.strftime("%H:%M:%S")
-		print(weather.getWeather())
 
-# class IncrediblyCrudeClock(Label):
-# 	def update(self, *args):
-# 		self.text = time.strftime("%H:%M:%S")
-# 		self.font_size = 120
-# 		self.font_name = "../assets/fonts/alarm-clock.ttf"
-# 		print(weather.getWeather())
+	def updateTemp(self, *args):
+		self.ids["temp"].text = str(int(weather.getWeather()['temp'])) + 'c'
+		self.ids["mintemp"].text = str(int(weather.getWeather()['temp_min'])) + 'c'
+		self.ids["maxtemp"].text = str(int(weather.getWeather()['temp_max'])) + 'c'
 
 class ClockFaceApp(App):
     def build(self):
         crudeclock = ClockFace()
-        Clock.schedule_interval(crudeclock.update, 1)
+        Clock.schedule_interval(crudeclock.updateTime, 1)
+        Clock.schedule_interval(crudeclock.updateTemp, 2)
         return crudeclock
 
 clockFaceApp = ClockFaceApp()
