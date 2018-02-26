@@ -5,8 +5,10 @@ from kivy.clock import Clock
 import time
 
 class IncrediblyCrudeClock(Label):
-    def update(self, *args):
-        self.text = time.strftime("%H:%M:%S")
+	def update(self, *args):
+		self.text = time.strftime("%H:%M:%S")
+		self.font_size = 120
+		self.font_name = "../assets/fonts/alarm-clock.ttf"
 
 class TimeApp(App):
     def build(self):
